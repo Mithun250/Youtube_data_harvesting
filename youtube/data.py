@@ -98,8 +98,8 @@ def channel_playlist(channel_id):
 def get_video_details(video_ids):
     video_data = []
 
-    for i in range(0, len(video_ids), 50): # process vedio IDs in group of 10 at a time
-        response = youtube.videos().list(part="snippet,contentDetails,statistics",id=','.join(video_ids[i:i+50])).execute() #['v1','v2',v3'..]=['v1,v2,v3,...] in next iteration['v51','v52',...]=['v51,v52,...']
+    for i in range(0, len(video_ids), 50):
+        response = youtube.videos().list(part="snippet,contentDetails,statistics",id=','.join(video_ids[i:i+50])).execute() 
         for item in response['items']:
             data = {
                 'Channel_Name': str(item['snippet']['channelTitle']), 
